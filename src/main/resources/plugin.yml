@@ -1,0 +1,4 @@
+name: TreeFella
+version: '${project.version}'
+main: me.otavio.treefella.TreeFella
+api-version: '1.20'
