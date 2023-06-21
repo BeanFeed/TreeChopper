@@ -17,7 +17,9 @@ public final class TreeFella extends JavaPlugin {
             Material.MANGROVE_LOG,
             Material.SPRUCE_LOG,
             Material.DARK_OAK_LOG,
-            Material.CHERRY_LOG
+            Material.CHERRY_LOG,
+            Material.WARPED_STEM,
+            Material.CRIMSON_STEM
     );
 
     @Override
