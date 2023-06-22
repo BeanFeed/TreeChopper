@@ -22,6 +22,28 @@ public final class TreeFella extends JavaPlugin {
             Material.CRIMSON_STEM
     );
 
+    public static final ImmutableList<Material> ORES = ImmutableList.of(
+            Material.COAL_ORE,
+            Material.COPPER_ORE,
+            Material.IRON_ORE,
+            Material.GOLD_ORE,
+            Material.EMERALD_ORE,
+            Material.DIAMOND_ORE,
+            Material.LAPIS_ORE,
+            Material.REDSTONE_ORE,
+            Material.DEEPSLATE_COAL_ORE,
+            Material.DEEPSLATE_COPPER_ORE,
+            Material.DEEPSLATE_IRON_ORE,
+            Material.DEEPSLATE_GOLD_ORE,
+            Material.DEEPSLATE_EMERALD_ORE,
+            Material.DEEPSLATE_DIAMOND_ORE,
+            Material.DEEPSLATE_LAPIS_ORE,
+            Material.DEEPSLATE_REDSTONE_ORE,
+            Material.NETHER_QUARTZ_ORE,
+            Material.NETHER_GOLD_ORE,
+            Material.ANCIENT_DEBRIS
+    );
+
     @Override
     public void onEnable() {
         // Plugin startup logic

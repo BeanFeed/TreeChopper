@@ -12,7 +12,7 @@ public class BlockPlaceEvent implements Listener {
     public void onBlockPlaceEvent(org.bukkit.event.block.BlockPlaceEvent e) {
         Block block = e.getBlock();
 
-        if (TreeFella.LOGS.contains(block.getType())) {
+        if (TreeFella.LOGS.contains(block.getType()) || TreeFella.ORES.contains(block.getType())) {
             int blockX = block.getLocation().getBlockX();
             int blockY = block.getLocation().getBlockY();
             int blockZ = block.getLocation().getBlockZ();
