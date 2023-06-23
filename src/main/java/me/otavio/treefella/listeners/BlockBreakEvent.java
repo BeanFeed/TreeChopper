@@ -82,9 +82,9 @@ public class BlockBreakEvent implements Listener {
                     Block nearbyBlock = center.getBlock();
 
                     if (TreeFella.LOGS.contains(nearbyBlock.getType()) || TreeFella.ORES.contains(nearbyBlock.getType())) {
-                        nearbyBlock.breakNaturally();
-
                         ItemStack tool = player.getInventory().getItemInMainHand();
+
+                        nearbyBlock.breakNaturally(tool);
 
                         int toolDurability = tool.getType().getMaxDurability();
 
