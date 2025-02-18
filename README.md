@@ -1,7 +1,17 @@
-# TreeFella for Paper
+# TreeChopper for Paper
+
+Forked from [TreeFella](https://hangar.papermc.io/V1ttorassi/TreeFella) 
+
+## Changes
+
+- Added support for chopping Pale Oak Logs
+- Ores now drop experience when vein mining
+
+# The Following is from the TreeFella Repository
+
 A simple plugin for quickly chopping down trees and ore mining!
 
-Tested up to version 1.20.1
+Tested up to version 1.21.4
 
 # How to install
 

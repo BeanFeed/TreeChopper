@@ -1,7 +1,7 @@
-package me.otavio.treefella.listeners;
+package com.beanfeed.treechopper.listeners;
 
-import me.otavio.treefella.TreeFella;
-import me.otavio.treefella.files.PlacedBlocks;
+import com.beanfeed.treechopper.TreeChopper;
+import com.beanfeed.treechopper.files.PlacedBlocks;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,7 +12,7 @@ public class BlockPlaceEvent implements Listener {
     public void onBlockPlaceEvent(org.bukkit.event.block.BlockPlaceEvent e) {
         Block block = e.getBlock();
 
-        if (TreeFella.LOGS.contains(block.getType()) || TreeFella.ORES.contains(block.getType())) {
+        if (TreeChopper.LOGS.contains(block.getType()) || TreeChopper.ORES.contains(block.getType())) {
             int blockX = block.getLocation().getBlockX();
             int blockY = block.getLocation().getBlockY();
             int blockZ = block.getLocation().getBlockZ();

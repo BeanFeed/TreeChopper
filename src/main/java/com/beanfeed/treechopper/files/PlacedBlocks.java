@@ -1,4 +1,4 @@
-package me.otavio.treefella.files;
+package com.beanfeed.treechopper.files;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -14,7 +14,7 @@ public class PlacedBlocks {
     private static FileConfiguration customFile;
 
     public static void setup() {
-        file = new File(Bukkit.getServer().getPluginManager().getPlugin("TreeFella").getDataFolder(), "PlacedBlocks.yml");
+        file = new File(Bukkit.getServer().getPluginManager().getPlugin("TreeChopper").getDataFolder(), "PlacedBlocks.yml");
 
         if (!file.exists()) {
             try {

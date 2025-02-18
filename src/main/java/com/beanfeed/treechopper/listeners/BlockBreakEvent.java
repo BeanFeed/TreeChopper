@@ -1,18 +1,21 @@
-package me.otavio.treefella.listeners;
+package com.beanfeed.treechopper.listeners;
 
 import com.google.common.collect.ImmutableList;
-import me.otavio.treefella.TreeFella;
-import me.otavio.treefella.files.PlacedBlocks;
+import com.beanfeed.treechopper.TreeChopper;
+import com.beanfeed.treechopper.files.PlacedBlocks;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
+import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.Random;
 
 public class BlockBreakEvent implements Listener {
 
@@ -51,24 +54,24 @@ public class BlockBreakEvent implements Listener {
         if (
             (
                 (
-                    AXES.contains(itemInHand.getType()) && TreeFella.LOGS.contains(b.getType())
+                    AXES.contains(itemInHand.getType()) && TreeChopper.LOGS.contains(b.getType())
                 ) || (
-                    PICKAXES.contains(itemInHand.getType()) && TreeFella.ORES.contains(b.getType())
+                    PICKAXES.contains(itemInHand.getType()) && TreeChopper.ORES.contains(b.getType())
                 )
             ) && !isPlayerPlacedBlock && p.isSneaking()
         ) {
-            this.checkNearbyBlocks(b, p);
+            this.checkNearbyBlocks(b, p, e);
 
-        } else if (isPlayerPlacedBlock && TreeFella.LOGS.contains(b.getType())) {
+        } else if (isPlayerPlacedBlock && TreeChopper.LOGS.contains(b.getType())) {
             PlacedBlocks.get().set(path, null);
         }
     }
 
-    public void checkNearbyBlocks(Block block, Player player) {
+    public void checkNearbyBlocks(Block block, Player player, org.bukkit.event.block.BlockBreakEvent event) {
         int x = -1;
         int y = -1;
         int z = -1;
-
+        Random rand = new Random();
         outerLoop:
         for (int k = 0; k < 3; k++) {
 
@@ -81,10 +84,37 @@ public class BlockBreakEvent implements Listener {
 
                     Block nearbyBlock = center.getBlock();
 
-                    if (TreeFella.LOGS.contains(nearbyBlock.getType()) || TreeFella.ORES.contains(nearbyBlock.getType())) {
+                    if (TreeChopper.LOGS.contains(nearbyBlock.getType()) || TreeChopper.ORES.contains(nearbyBlock.getType())) {
                         ItemStack tool = player.getInventory().getItemInMainHand();
 
-                        nearbyBlock.breakNaturally(tool);
+                        nearbyBlock.breakNaturally(tool, true);
+
+                        switch (nearbyBlock.getType()) {
+                            case COAL_ORE:
+                                event.setExpToDrop(rand.nextInt(0,2));
+                                break;
+                            case NETHER_GOLD_ORE:
+                                event.setExpToDrop(rand.nextInt(0,1));
+                                break;
+                            case DIAMOND_ORE:
+                            case DEEPSLATE_DIAMOND_ORE:
+                            case EMERALD_ORE:
+                            case DEEPSLATE_EMERALD_ORE:
+                                event.setExpToDrop(rand.nextInt(3,7));
+                                break;
+                            case LAPIS_ORE:
+                            case DEEPSLATE_LAPIS_ORE:
+                            case NETHER_QUARTZ_ORE:
+                                event.setExpToDrop(rand.nextInt(2,5));
+                                break;
+                            case REDSTONE_ORE:
+                            case DEEPSLATE_REDSTONE_ORE:
+                                event.setExpToDrop(rand.nextInt(1,5));
+                                break;
+                        }
+
+                        int xpAmount = event.getExpToDrop();
+                        nearbyBlock.getWorld().spawn(nearbyBlock.getLocation(), ExperienceOrb.class).setExperience(xpAmount);
 
                         int toolDurability = tool.getType().getMaxDurability();
 
@@ -104,7 +134,7 @@ public class BlockBreakEvent implements Listener {
                             break outerLoop;
                         }
 
-                        this.checkNearbyBlocks(nearbyBlock, player);
+                        this.checkNearbyBlocks(nearbyBlock, player, event);
 
                     }
 

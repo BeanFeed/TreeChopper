@@ -1,4 +1,4 @@
-name: TreeFella
+name: TreeChopper
 version: '${project.version}'
-main: me.otavio.treefella.TreeFella
-api-version: '1.20'
+main: com.beanfeed.treechopper.TreeChopper
+api-version: '1.21.4'
