@@ -89,30 +89,6 @@ public class BlockBreakEvent implements Listener {
 
                         nearbyBlock.breakNaturally(tool, true);
 
-                        switch (nearbyBlock.getType()) {
-                            case COAL_ORE:
-                                event.setExpToDrop(rand.nextInt(0,2));
-                                break;
-                            case NETHER_GOLD_ORE:
-                                event.setExpToDrop(rand.nextInt(0,1));
-                                break;
-                            case DIAMOND_ORE:
-                            case DEEPSLATE_DIAMOND_ORE:
-                            case EMERALD_ORE:
-                            case DEEPSLATE_EMERALD_ORE:
-                                event.setExpToDrop(rand.nextInt(3,7));
-                                break;
-                            case LAPIS_ORE:
-                            case DEEPSLATE_LAPIS_ORE:
-                            case NETHER_QUARTZ_ORE:
-                                event.setExpToDrop(rand.nextInt(2,5));
-                                break;
-                            case REDSTONE_ORE:
-                            case DEEPSLATE_REDSTONE_ORE:
-                                event.setExpToDrop(rand.nextInt(1,5));
-                                break;
-                        }
-
                         int xpAmount = event.getExpToDrop();
                         if(xpAmount > 0) nearbyBlock.getWorld().spawn(nearbyBlock.getLocation(), ExperienceOrb.class).setExperience(xpAmount);
 
