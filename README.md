@@ -7,7 +7,7 @@ Forked from [TreeFella](https://hangar.papermc.io/V1ttorassi/TreeFella)
 - Added support for chopping Pale Oak Logs
 - Ores now drop experience when vein mining
 
-# The Following is from the TreeFella Repository
+### The Following is from the TreeFella Repository
 
 A simple plugin for quickly chopping down trees and ore mining!
 

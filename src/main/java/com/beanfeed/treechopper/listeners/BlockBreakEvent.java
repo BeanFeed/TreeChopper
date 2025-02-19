@@ -114,7 +114,7 @@ public class BlockBreakEvent implements Listener {
                         }
 
                         int xpAmount = event.getExpToDrop();
-                        nearbyBlock.getWorld().spawn(nearbyBlock.getLocation(), ExperienceOrb.class).setExperience(xpAmount);
+                        if(xpAmount > 0) nearbyBlock.getWorld().spawn(nearbyBlock.getLocation(), ExperienceOrb.class).setExperience(xpAmount);
 
                         int toolDurability = tool.getType().getMaxDurability();
 
