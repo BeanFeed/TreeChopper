@@ -1,4 +1,4 @@
 name: TreeChopper
 version: '${project.version}'
 main: com.beanfeed.treechopper.TreeChopper
-api-version: '1.21.4'
+api-version: '1.21'
