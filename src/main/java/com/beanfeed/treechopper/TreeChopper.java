@@ -19,8 +19,7 @@ public final class TreeChopper extends JavaPlugin {
             Material.DARK_OAK_LOG,
             Material.CHERRY_LOG,
             Material.WARPED_STEM,
-            Material.CRIMSON_STEM,
-            Material.PALE_OAK_LOG
+            Material.CRIMSON_STEM
     );
 
     public static final ImmutableList<Material> ORES = ImmutableList.of(
