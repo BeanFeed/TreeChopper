@@ -126,12 +126,12 @@ public class BlockBreakEvent implements Listener {
                         if (dmg != null && dmg.getDamage() <= toolDurability) {
                             if (meta.hasEnchant(Enchantment.UNBREAKING)) {
                                 int unbLevel = meta.getEnchantLevel(Enchantment.UNBREAKING);
-                                int chanceOfDmg = 1/(unbLevel+1);
+                                double chanceOfDmg = (double) 1 /(unbLevel+1);
 
                                 // Unbreaking 1 = 50% chance of taking damage
                                 // Unbreaking 2 = 33% chance of taking damage
                                 // Unbreaking 3 = 25% chance of taking damage
-                                if (rand.nextDouble() >= chanceOfDmg) {
+                                if (rand.nextDouble() < chanceOfDmg) {
                                     dmg.setDamage(dmg.getDamage() + 1);
                                 }
                             } else {
