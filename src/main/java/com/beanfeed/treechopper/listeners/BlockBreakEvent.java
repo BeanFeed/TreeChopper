@@ -7,6 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -123,7 +124,19 @@ public class BlockBreakEvent implements Listener {
                         Damageable dmg = (Damageable) meta;
 
                         if (dmg != null && dmg.getDamage() <= toolDurability) {
-                            dmg.setDamage(dmg.getDamage() + 1);
+                            if (meta.hasEnchant(Enchantment.UNBREAKING)) {
+                                int unbLevel = meta.getEnchantLevel(Enchantment.UNBREAKING);
+                                double chanceOfDmg = (double) 1 /(unbLevel+1);
+
+                                // Unbreaking 1 = 50% chance of taking damage
+                                // Unbreaking 2 = 33% chance of taking damage
+                                // Unbreaking 3 = 25% chance of taking damage
+                                if (rand.nextDouble() < chanceOfDmg) {
+                                    dmg.setDamage(dmg.getDamage() + 1);
+                                }
+                            } else {
+                                dmg.setDamage(dmg.getDamage() + 1);
+                            }
 
                             tool.setItemMeta(dmg);
 
