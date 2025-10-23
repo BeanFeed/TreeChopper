@@ -26,7 +26,8 @@ public class BlockBreakEvent implements Listener {
             Material.IRON_AXE,
             Material.STONE_AXE,
             Material.NETHERITE_AXE,
-            Material.WOODEN_AXE
+            Material.WOODEN_AXE,
+            Material.COPPER_AXE
     );
 
     private final ImmutableList<Material> PICKAXES = ImmutableList.of(
@@ -35,7 +36,8 @@ public class BlockBreakEvent implements Listener {
             Material.IRON_PICKAXE,
             Material.STONE_PICKAXE,
             Material.NETHERITE_PICKAXE,
-            Material.WOODEN_PICKAXE
+            Material.WOODEN_PICKAXE,
+            Material.COPPER_PICKAXE
     );
 
     @EventHandler
